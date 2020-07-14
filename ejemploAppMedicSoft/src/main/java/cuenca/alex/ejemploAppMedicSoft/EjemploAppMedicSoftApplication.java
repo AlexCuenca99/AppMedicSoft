@@ -14,6 +14,7 @@ public class EjemploAppMedicSoftApplication {
 		
 		System.out.println("eSTA ES UA¿NA PREUBA");
 		System.out.println("Vele si funka tu pull");
+		System.out.println("Vele si funka tu pull x2");
 	}
 
 }
