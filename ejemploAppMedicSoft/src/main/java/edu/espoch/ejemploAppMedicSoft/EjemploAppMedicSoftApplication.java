@@ -1,4 +1,4 @@
-package cuenca.alex.ejemploAppMedicSoft;
+package edu.espoch.ejemploAppMedicSoft;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,13 +8,6 @@ public class EjemploAppMedicSoftApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EjemploAppMedicSoftApplication.class, args);
-		/*
-		 * Este es un mensaje de prueba :v
-		 * */
-		
-		System.out.println("eSTA ES UA¿NA PREUBA");
-		System.out.println("Vele si funka tu pull");
-		System.out.println("Vele si funka tu pull x2");
 	}
 
 }
