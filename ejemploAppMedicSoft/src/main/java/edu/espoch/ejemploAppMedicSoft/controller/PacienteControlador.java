@@ -78,7 +78,7 @@ public class PacienteControlador {
 		picService.uploadPicture(file, idPic);
 		paciente.setFoto(idPic);
 		repo.save(paciente);
-		return "redirect:list";
+		return "redirect:list_pacientes";
 	}
 	
 	@PreAuthorize("hasAuthority('admin')")
