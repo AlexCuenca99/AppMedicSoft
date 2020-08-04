@@ -61,7 +61,7 @@ public class PacienteControlador {
 	}
 	
 	@PreAuthorize("hasAuthority('admin')")
-	@PostMapping("/add")
+	@PostMapping("/add_paciente")
 	public String addPaciente(Paciente paciente, BindingResult result, Model model, @RequestParam("file") MultipartFile file) {
 		if(result.hasErrors()) {
 			return "add_paciente";
