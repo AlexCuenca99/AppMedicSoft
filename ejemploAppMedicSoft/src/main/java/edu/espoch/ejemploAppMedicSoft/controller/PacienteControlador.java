@@ -16,7 +16,7 @@ import edu.espoch.ejemploAppMedicSoft.entities.Paciente;
 import edu.espoch.ejemploAppMedicSoft.repository.PacienteRepo;
 
 @Controller
-@RequestMapping("/pacientes")
+@RequestMapping("/medicsoft")
 public class PacienteControlador {
 	
 	@Autowired
@@ -27,10 +27,14 @@ public class PacienteControlador {
 		return "index";
 	}
 	
+	/*OJOOOOOOOOOOOOOOOOOOO*/
+	
 	@GetMapping("/add")
 	public String showSignUpForm(Paciente paciente) {
 		return "add_paciente";
 	}
+	
+	/*-----------------*/
 	
 	@GetMapping("list")
 	public String showRecipes(Model model) {
@@ -52,13 +56,13 @@ public class PacienteControlador {
 	@RequestMapping("/private")
 	
 	public String showPrivate(Model model) {
-		model.addAttribute("pacientes", repo.findAll());
+		model.addAttribute("medicsoft", repo.findAll());
 		return "list_pacientes";
 	}
 	
 	@PreAuthorize("hasAuthority('admin')")
 	@PostMapping("/add")
-	public String addRecipe(Paciente paciente, BindingResult result, Model model, @RequestParam("file") MultipartFile file) {
+	public String addPaciente(Paciente paciente, BindingResult result, Model model, @RequestParam("file") MultipartFile file) {
 		if(result.hasErrors()) {
 			return "add_paciente";
 		}
@@ -84,7 +88,7 @@ public class PacienteControlador {
 		}
 		
 		repo.save(paciente);
-		return "redirect:/pacientes/list";
+		return "redirect:/medicsoft/list";
 	}
 	
 	@PreAuthorize("hasAuthority('admin')")
@@ -92,7 +96,7 @@ public class PacienteControlador {
 	public String deletePaciente(@PathVariable("id") Long id, Model model) {
 		Paciente paciente = repo.findById(id).orElseThrow(() -> new IllegalArgumentException("ID de paciente no valido:" + id));
 		repo.delete(paciente);
-		model.addAttribute("pacientes", repo.findAll());
+		model.addAttribute("medicsoft", repo.findAll());
 		return "list_pacientes";
 	}
 }
