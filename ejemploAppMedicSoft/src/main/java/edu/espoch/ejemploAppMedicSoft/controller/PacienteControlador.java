@@ -43,7 +43,7 @@ public class PacienteControlador {
 	
 	/*-----------------*/
 	
-	@GetMapping("/list")
+	@GetMapping("/list_pacientes")
 	public String showRecipes(Model model) {
 		model.addAttribute("paciente", repo.findAll());
 		return "list_pacientes";
