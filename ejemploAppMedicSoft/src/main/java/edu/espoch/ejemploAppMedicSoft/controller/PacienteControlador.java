@@ -1,5 +1,7 @@
 package edu.espoch.ejemploAppMedicSoft.controller;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import edu.espoch.ejemploAppMedicSoft.entities.Paciente;
 import edu.espoch.ejemploAppMedicSoft.repository.PacienteRepo;
+import edu.espoch.ejemploAppMedicSoft.service.PictureService;
+
 
 @Controller
 @RequestMapping("/medicsoft")
@@ -21,6 +25,9 @@ public class PacienteControlador {
 	
 	@Autowired
 	private PacienteRepo repo;
+	
+	@Autowired
+	PictureService picService;
 	
 	@RequestMapping("")
 	public String index() {
@@ -66,7 +73,10 @@ public class PacienteControlador {
 		if(result.hasErrors()) {
 			return "add_paciente";
 		}
-
+		
+		UUID idPic=UUID.randomUUID();
+		picService.uploadPicture(file, idPic);
+		paciente.setFoto(idPic);
 		repo.save(paciente);
 		return "redirect:list";
 	}
