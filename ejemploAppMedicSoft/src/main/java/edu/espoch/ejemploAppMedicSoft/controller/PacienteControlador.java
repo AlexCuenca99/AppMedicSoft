@@ -29,7 +29,7 @@ public class PacienteControlador {
 	
 	/*OJOOOOOOOOOOOOOOOOOOO*/
 	
-	@GetMapping("/add")
+	@GetMapping("/add_paciente")
 	public String showSignUpForm(Paciente paciente) {
 		return "add_paciente";
 	}
@@ -61,7 +61,7 @@ public class PacienteControlador {
 	}
 	
 	@PreAuthorize("hasAuthority('admin')")
-	@PostMapping("/add_paciente")
+	@PostMapping("/add")
 	public String addPaciente(Paciente paciente, BindingResult result, Model model, @RequestParam("file") MultipartFile file) {
 		if(result.hasErrors()) {
 			return "add_paciente";
