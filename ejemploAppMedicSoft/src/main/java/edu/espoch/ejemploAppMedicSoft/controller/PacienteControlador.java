@@ -36,7 +36,7 @@ public class PacienteControlador {
 	
 	/*-----------------*/
 	
-	@GetMapping("list")
+	@GetMapping("/list")
 	public String showRecipes(Model model) {
 		model.addAttribute("paciente", repo.findAll());
 		return "list_pacientes";
