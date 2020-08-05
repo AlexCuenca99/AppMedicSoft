@@ -64,7 +64,7 @@ public class PacienteControlador {
 	
 	public String showPrivate(Model model) {
 		model.addAttribute("medicsoft", repo.findAll());
-		return "list_pacientes";
+		return "redirect:list_p";
 	}
 	
 	@PreAuthorize("hasAuthority('admin')")
@@ -109,6 +109,6 @@ public class PacienteControlador {
 		Paciente paciente = repo.findById(id).orElseThrow(() -> new IllegalArgumentException("ID de paciente no valido:" + id));
 		repo.delete(paciente);
 		model.addAttribute("medicsoft", repo.findAll());
-		return "list_p";
+		return "redirect:/medicsoft/list_p";
 	}
 }
