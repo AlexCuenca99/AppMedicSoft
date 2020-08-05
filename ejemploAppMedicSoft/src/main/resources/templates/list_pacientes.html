@@ -106,10 +106,10 @@
       												</div>
       												<div class="modal-body">
         												<h4 class="text-dark" th:text="${paciente.nombre}"></h4>
-        												<h4 class="text-dark" th:text="${paciente.apellido"></h4>
-        												<p><img th:src="@{/pic/{id}(id=${paciente.foto}+.jpg)}" width="240" class="rounded"></p>
+        												
         												<!--  <div class="text" th:utext="${#strings.unescapeJava(#strings.replace(#strings.escapeJava(receta.preparacion),'\n','&lt;br /&gt;'))}"></div> -->
-        												<!--  <p class="text-dark" data-th-utext="${#strings.replace(#strings.escapeXml(paciente.apellido),'&#10;','&lt;br&gt;')}"></p>-->
+        												<p class="text-dark" data-th-utext="${#strings.replace(#strings.escapeXml(paciente.apellido),'&#10;','&lt;br&gt;')}"></p>
+        												<p><img th:src="@{/pic/{id}(id=${paciente.foto}+.jpg)}" width="240" class="rounded"></p>
                                 <p class="text-dark" data-th-utext="${#strings.replace(#strings.escapeXml(paciente.CI),'&#10;','&lt;br&gt;')}"></p>
                                 <p class="text-dark" data-th-utext="${#strings.replace(#strings.escapeXml(paciente.historiaClinica),'&#10;','&lt;br&gt;')}"></p>
                                 <p class="text-dark" data-th-utext="${#strings.replace(#strings.escapeXml(paciente.numeroTelefonico),'&#10;','&lt;br&gt;')}"></p>
