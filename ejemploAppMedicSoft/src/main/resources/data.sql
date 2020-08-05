@@ -1,2 +1,0 @@
-INSERT INTO paciente (CI,nombre,apellido,edad,foto,historiaClinica,numeroTelefonico,correo)
-VALUES('0604741355','Aydin Mary','Valenzuela Inca',19,'7f5cdd28c77b4199944febe905e7ac61','texto textot','0992839888','aydin@unach.edu.ec');
