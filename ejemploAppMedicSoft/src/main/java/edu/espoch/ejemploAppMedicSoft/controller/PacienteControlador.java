@@ -43,7 +43,7 @@ public class PacienteControlador {
 	
 	/*-----------------*/
 	
-	@GetMapping("/list_p")
+	@GetMapping("/list_pa")
 	public String showRecipes(Model model) {
 		model.addAttribute("pacientes", repo.findAll());
 		return "list_pacientes";
@@ -80,7 +80,7 @@ public class PacienteControlador {
 		picService.uploadPicture(file, idPic);
 		paciente.setFoto(idPic);
 		repo.save(paciente);
-		return "redirect:list_p";
+		return "redirect:list_pa";
 	}
 	
 	@PreAuthorize("hasAuthority('admin')")
