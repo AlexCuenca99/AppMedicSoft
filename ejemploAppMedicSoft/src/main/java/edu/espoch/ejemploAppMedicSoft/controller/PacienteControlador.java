@@ -100,7 +100,7 @@ public class PacienteControlador {
 		}
 		
 		repo.save(paciente);
-		return "redirect:/medicsoft/list";
+		return "redirect:/medicsoft/list_p";
 	}
 	
 	@PreAuthorize("hasAuthority('admin')")
