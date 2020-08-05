@@ -23,7 +23,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				"/js/**",
 				"/css/**",
 				"/img/**",
-				"/webjars/**"
+				"/webjars/**",
+				"/console/**"
 				).permitAll()
 		.and()
 		.formLogin()
@@ -35,6 +36,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.permitAll()
 		.logoutRequestMatcher(new AntPathRequestMatcher("/medicsoft/logout"))
 		.logoutSuccessUrl("/medicsoft");	
+		
+		http.csrf().disable();
+        http.headers().frameOptions().disable();
 	}
 	
 	@Autowired

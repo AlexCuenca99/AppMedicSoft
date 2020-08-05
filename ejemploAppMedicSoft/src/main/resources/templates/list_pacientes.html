@@ -60,13 +60,13 @@
     <div class="container my-2">
         <div class="card-transparent">
             <div class="card-body rounded" style="background-color: rgba(0, 0, 0, 0.4); ">
-                <div th:switch="${medicsoft}" class="container my-5">
+                <div th:switch="${pacientes}" class="container my-5">
                         <h2 th:case="null">Ningun paciente ha sido registrado aún</h2>
                         <div th:case="*">
                             <table class="table table-striped table-responsive-lg">
                                 <thead>
                                     <tr>
-                                        <th style="width: 51%">Nombre</th>
+                                        <th style="width: 30%">Nombre</th>
                                         <th style="width: 15%">Apellido</th>
                                         <th style="width: 10%">CI</th>
                                         <th style="width: 10%">Historia Clínica</th>
@@ -107,11 +107,11 @@
         												<p><img th:src="@{/pic/{id}(id=${paciente.foto}+.jpg)}" width="240" class="rounded"></p>
         												<!--  <div class="text" th:utext="${#strings.unescapeJava(#strings.replace(#strings.escapeJava(receta.preparacion),'\n','&lt;br /&gt;'))}"></div> -->
         												<p class="text-dark" data-th-utext="${#strings.replace(#strings.escapeXml(paciente.apellido),'&#10;','&lt;br&gt;')}"></p>
-                                <p class="text-dark" data-th-utext="${#strings.replace(#strings.escapeXml(paciente.CI),'&#10;','&lt;br&gt;')}"></p>
-                                <p class="text-dark" data-th-utext="${#strings.replace(#strings.escapeXml(paciente.historiaClinica),'&#10;','&lt;br&gt;')}"></p>
-                                <p class="text-dark" data-th-utext="${#strings.replace(#strings.escapeXml(paciente.numeroTelefonico),'&#10;','&lt;br&gt;')}"></p>
-                                <p class="text-dark" data-th-utext="${#strings.replace(#strings.escapeXml(paciente.edad),'&#10;','&lt;br&gt;')}"></p>
-                                <p class="text-dark" data-th-utext="${#strings.replace(#strings.escapeXml(paciente.correo),'&#10;','&lt;br&gt;')}"></p>
+                                <p class="text-dark2" data-th-utext="${#strings.replace(#strings.escapeXml(paciente.CI),'&#10;','&lt;br&gt;')}"></p>
+                                <p class="text-dark3" data-th-utext="${#strings.replace(#strings.escapeXml(paciente.historiaClinica),'&#10;','&lt;br&gt;')}"></p>
+                                <p class="text-dark4" data-th-utext="${#strings.replace(#strings.escapeXml(paciente.numeroTelefonico),'&#10;','&lt;br&gt;')}"></p>
+                                <p class="text-dark5" data-th-utext="${#strings.replace(#strings.escapeXml(paciente.edad),'&#10;','&lt;br&gt;')}"></p>
+                                <p class="text-dark6" data-th-utext="${#strings.replace(#strings.escapeXml(paciente.correo),'&#10;','&lt;br&gt;')}"></p>
       												</div>
       												<div class="modal-footer">
         											<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
