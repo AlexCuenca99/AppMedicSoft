@@ -109,6 +109,6 @@ public class PacienteControlador {
 		Paciente paciente = repo.findById(id).orElseThrow(() -> new IllegalArgumentException("ID de paciente no valido:" + id));
 		repo.delete(paciente);
 		model.addAttribute("medicsoft", repo.findAll());
-		return "list_pacientes";
+		return "list_p";
 	}
 }
