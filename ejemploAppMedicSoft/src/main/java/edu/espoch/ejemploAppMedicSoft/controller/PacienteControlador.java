@@ -93,12 +93,17 @@ public class PacienteControlador {
 	
 	@PreAuthorize("hasAuthority('admin')")
 	@PostMapping("/update/{id}")
-	public String updatePaciente(@PathVariable("id") Long id, Paciente paciente, BindingResult result, Model model) {
+	public String updatePaciente(@PathVariable("id") Long id, Paciente paciente, BindingResult result, Model model,@RequestParam("file") MultipartFile file) {
 		if(result.hasErrors()) {
 			paciente.setId(id);
 			return "update_paciente";
 		}
-		
+		if(!file.isEmpty()) {
+			picService.deletePicture(paciente.getFoto());
+			UUID idPic =UUID.randomUUID();
+			picService.uploadPicture(file, idPic);
+			paciente.setFoto(idPic);
+		}
 		repo.save(paciente);
 		return "redirect:/medicsoft/list_p";
 	}
