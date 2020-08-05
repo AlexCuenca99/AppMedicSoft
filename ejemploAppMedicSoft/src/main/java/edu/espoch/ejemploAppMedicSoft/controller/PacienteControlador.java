@@ -43,9 +43,9 @@ public class PacienteControlador {
 	
 	/*-----------------*/
 	
-	@GetMapping("/list_pacientes")
+	@GetMapping("/list_p")
 	public String showRecipes(Model model) {
-		model.addAttribute("paciente", repo.findAll());
+		model.addAttribute("pacientes", repo.findAll());
 		return "list_pacientes";
 	}
 	
@@ -70,7 +70,9 @@ public class PacienteControlador {
 	@PreAuthorize("hasAuthority('admin')")
 	@PostMapping("/add")
 	public String addPaciente(Paciente paciente, BindingResult result, Model model, @RequestParam("file") MultipartFile file) {
+		System.out.println(paciente.getApellido());
 		if(result.hasErrors()) {
+			System.out.println("error");
 			return "add_paciente";
 		}
 		
@@ -78,7 +80,7 @@ public class PacienteControlador {
 		picService.uploadPicture(file, idPic);
 		paciente.setFoto(idPic);
 		repo.save(paciente);
-		return "redirect:list_pacientes";
+		return "redirect:list_p";
 	}
 	
 	@PreAuthorize("hasAuthority('admin')")
