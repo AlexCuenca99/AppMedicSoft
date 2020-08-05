@@ -44,7 +44,7 @@ public class PacienteControlador {
 	/*-----------------*/
 	
 	@GetMapping("/list_pacientes")
-	public String showRecipes(Model model) {
+	public String showPacientes(Model model) {
 		model.addAttribute("paciente", repo.findAll());
 		return "list_pacientes";
 	}
@@ -102,7 +102,7 @@ public class PacienteControlador {
 	}
 	
 	@PreAuthorize("hasAuthority('admin')")
-	@GetMapping("delete/{id}")
+	@GetMapping("/delete/{id}")
 	public String deletePaciente(@PathVariable("id") Long id, Model model) {
 		Paciente paciente = repo.findById(id).orElseThrow(() -> new IllegalArgumentException("ID de paciente no valido:" + id));
 		repo.delete(paciente);
