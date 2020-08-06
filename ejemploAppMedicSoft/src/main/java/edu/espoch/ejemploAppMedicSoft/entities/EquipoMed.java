@@ -28,7 +28,6 @@ public class EquipoMed {
 	
 	private int cantidad;
 	
-	private int inventarioDisp;
 
 	public Long getId() {
 		return id;
@@ -86,12 +85,5 @@ public class EquipoMed {
 		this.cantidad = cantidad;
 	}
 
-	public int getInventarioDisp() {
-		return inventarioDisp;
-	}
-
-	public void setInventarioDisp(int inventarioDisp) {
-		this.inventarioDisp = inventarioDisp;
-	}
 	
 }
