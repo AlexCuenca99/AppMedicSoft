@@ -46,11 +46,14 @@ public class PacienteControlador {
 	
 	/*-----------------*/
 	
+	
+	
 	@GetMapping("/list_p")
 	public String showRecipes(Model model) {
 		model.addAttribute("pacientes", repo.findAll());
 		return "list_pacientes";
 	}
+	
 	
 	@RequestMapping("/login")
 	public String showLogin() {
@@ -118,67 +121,6 @@ public class PacienteControlador {
 		repo.delete(paciente);
 		model.addAttribute("medicsoft", repo.findAll());
 		return "redirect:/medicsoft/list_p";
-	}
-	
-	
-	//Equipo Medico OJOOOOOOOOOOOOOOOOOOOOOOO
-	
-/*OJOOOOOOOOOOOOOOOOOOO*/
-	
-	@GetMapping("/add_equipo")
-	public String showSignUpFormEquip(EquipoMed equipo) {
-		return "add_equipo";
-	}
-	
-	/*-----------------*/
-	
-	@GetMapping("/list_e")
-	public String showEquips(Model model) {
-		model.addAttribute("equipos", repoeq.findAll());
-		return "list_equipo";
-	}
-	
-
-	
-	@PreAuthorize("hasAuthority('admin')")
-	@PostMapping("/add_equipo")
-	public String addEquipo(EquipoMed equipo, BindingResult result, Model model) {
-		
-		if(result.hasErrors()) {
-			
-			return "add_equipo";
-		}
-		
-		return "redirect:list_e";
-	}
-	
-	@PreAuthorize("hasAuthority('admin')")
-	@GetMapping("/edit/{id}")
-	public String showUpdateFormEq(@PathVariable("id") Long id, Model model) {
-		EquipoMed equipo = repoeq.findById(id).orElseThrow(() -> new IllegalArgumentException("ID de equipo no valido: " + id));
-		model.addAttribute("equipo", equipo);
-		return "update_equipo";
-	}
-	
-	@PreAuthorize("hasAuthority('admin')")
-	@PostMapping("/updateeq/{id}")
-	public String updateEquipo(@PathVariable("id") Long id, EquipoMed equipo, BindingResult result, Model model) {
-		if(result.hasErrors()) {
-			equipo.setId(id);
-			return "update_paciente";
-		}
-		
-		repoeq.save(equipo);
-		return "redirect:/medicsoft/list_e";
-	}
-	
-	@PreAuthorize("hasAuthority('admin')")
-	@GetMapping("deleteeq/{id}")
-	public String deleteEquipo(@PathVariable("id") Long id, Model model) {
-		EquipoMed equipo = repoeq.findById(id).orElseThrow(() -> new IllegalArgumentException("ID de equipo no valido:" + id));
-		repoeq.delete(equipo);
-		model.addAttribute("medicsoft", repoeq.findAll());
-		return "redirect:/medicsoft/list_e";
 	}
 	
 	
