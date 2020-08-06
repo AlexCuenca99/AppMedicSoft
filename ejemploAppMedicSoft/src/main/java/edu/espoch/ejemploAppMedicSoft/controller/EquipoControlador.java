@@ -27,7 +27,7 @@ public class EquipoControlador {
 	/*OJOOOOOOOOOOOOOOOOOOO*/
 		
 		@GetMapping("/add_equipo")
-		public String showSignUpFormEquip(EquipoMed equipo) {
+		public String showSignUpFormEquip(EquipoMed equipomed) {
 			return "add_equipo";
 		}
 		
@@ -42,7 +42,7 @@ public class EquipoControlador {
 		
 
 		@PreAuthorize("hasAuthority('admin')")
-		@PostMapping("/addequip")
+		@PostMapping("/addeq")
 		public String addEquipo(EquipoMed equipo, BindingResult result, Model model) {
 			
 			if(result.hasErrors()) {
