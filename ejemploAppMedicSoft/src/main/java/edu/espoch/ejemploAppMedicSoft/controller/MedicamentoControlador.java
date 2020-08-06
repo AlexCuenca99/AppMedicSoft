@@ -54,7 +54,7 @@ public class MedicamentoControlador {
 	@GetMapping("/editme/{id}")
 	public String showUpdateFormEq(@PathVariable("id") Long id, Model model) {
 		Medicamento medi = repome.findById(id).orElseThrow(() -> new IllegalArgumentException("ID de medicamento no valido: " + id));
-		model.addAttribute("medi", medi);
+		model.addAttribute("medicamento", medi);
 		return "update-medicamento";
 	}
 	
