@@ -27,7 +27,7 @@ public class EquipoControlador {
 	/*OJOOOOOOOOOOOOOOOOOOO*/
 		
 		@GetMapping("/add_equipo")
-		public String showSignUpFormEquip(EquipoMed equipomed) {
+		public String showSignUpFormEquip(EquipoMed equipo) {
 			return "add_equipo";
 		}
 		
@@ -43,17 +43,17 @@ public class EquipoControlador {
 
 		@PreAuthorize("hasAuthority('admin')")
 		@PostMapping("/addequip")
-		public String addEquipo(EquipoMed equipomed, BindingResult result, Model model) {
+		public String addEquipo(EquipoMed equipo, BindingResult result, Model model) {
 			
 			if(result.hasErrors()) {
 				
 				return "add_equipo";
 			}
-			repoeq.save(equipomed);
+			repoeq.save(equipo);
 			return "redirect:list_e";
 		}
 		
-		/*
+	
 		@PreAuthorize("hasAuthority('admin')")
 		@GetMapping("/editeq/{id}")
 		public String showUpdateFormEq(@PathVariable("id") Long id, Model model) {
@@ -81,6 +81,6 @@ public class EquipoControlador {
 			repoeq.delete(equipo);
 			model.addAttribute("medicsoft", repoeq.findAll());
 			return "redirect:/medicsoft/list_e";
-		} */
+		} 
 
 }
