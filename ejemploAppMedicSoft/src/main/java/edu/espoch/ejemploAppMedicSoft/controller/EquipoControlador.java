@@ -39,8 +39,19 @@ public class EquipoControlador {
 			return "list_equipo";
 		}
 		
+		@PostMapping("/addequip")
+		public String addEquipo(EquipoMed equipo, BindingResult result, Model model) {
+			
+			if(result.hasErrors()) {
+				
+				return "add_equipo";
+			}
+			repoeq.save(equipo);
+			return "redirect:list_e";
+		}
+		
 
-		@PreAuthorize("hasAuthority('admin')")
+		/*@PreAuthorize("hasAuthority('admin')")
 		@PostMapping("/addequip")
 		public String addEquipo(EquipoMed equipo, BindingResult result, Model model) {
 			
@@ -79,6 +90,6 @@ public class EquipoControlador {
 			repoeq.delete(equipo);
 			model.addAttribute("medicsoft", repoeq.findAll());
 			return "redirect:/medicsoft/list_e";
-		}
+		} */
 
 }
