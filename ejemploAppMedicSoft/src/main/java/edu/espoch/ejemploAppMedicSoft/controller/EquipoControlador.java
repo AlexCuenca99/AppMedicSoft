@@ -27,7 +27,7 @@ public class EquipoControlador {
 	/*OJOOOOOOOOOOOOOOOOOOO*/
 		
 		@GetMapping("/add_equipo")
-		public String showSignUpFormEquip(EquipoMed equipo) {
+		public String showSignUpFormEquip(EquipoMed equipomed) {
 			return "add_equipo";
 		}
 		
@@ -39,30 +39,21 @@ public class EquipoControlador {
 			return "list_equipo";
 		}
 		
-		@PostMapping("/addequip")
-		public String addEquipo(EquipoMed equipo, BindingResult result, Model model) {
-			
-			if(result.hasErrors()) {
-				
-				return "add_equipo";
-			}
-			repoeq.save(equipo);
-			return "redirect:list_e";
-		}
 		
 
-		/*@PreAuthorize("hasAuthority('admin')")
+		@PreAuthorize("hasAuthority('admin')")
 		@PostMapping("/addequip")
-		public String addEquipo(EquipoMed equipo, BindingResult result, Model model) {
+		public String addEquipo(EquipoMed equipomed, BindingResult result, Model model) {
 			
 			if(result.hasErrors()) {
 				
 				return "add_equipo";
 			}
-			repoeq.save(equipo);
+			repoeq.save(equipomed);
 			return "redirect:list_e";
 		}
 		
+		/*
 		@PreAuthorize("hasAuthority('admin')")
 		@GetMapping("/editeq/{id}")
 		public String showUpdateFormEq(@PathVariable("id") Long id, Model model) {
