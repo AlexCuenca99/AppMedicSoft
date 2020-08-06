@@ -28,7 +28,7 @@ public class Medicamento {
 	
 	private float precio;
 	
-	private int inventarioDisp;
+	
 
 	public Long getId() {
 		return id;
@@ -86,12 +86,6 @@ public class Medicamento {
 		this.precio = precio;
 	}
 
-	public int getInventarioDisp() {
-		return inventarioDisp;
-	}
-
-	public void setInventarioDisp(int inventarioDisp) {
-		this.inventarioDisp = inventarioDisp;
-	}
+	
 	
 }
