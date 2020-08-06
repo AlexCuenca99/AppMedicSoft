@@ -72,7 +72,7 @@ public class PacienteControlador {
 	
 	public String showPrivate(Model model) {
 		model.addAttribute("medicsoft", repo.findAll());
-		return "redirect:list_p";
+		return "index";
 	}
 	
 	@PreAuthorize("hasAuthority('admin')")
