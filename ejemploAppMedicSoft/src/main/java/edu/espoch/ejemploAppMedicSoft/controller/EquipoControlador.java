@@ -41,19 +41,19 @@ public class EquipoControlador {
 		
 
 		@PreAuthorize("hasAuthority('admin')")
-		@PostMapping("/add_equipo")
+		@PostMapping("/addequip")
 		public String addEquipo(EquipoMed equipo, BindingResult result, Model model) {
 			
 			if(result.hasErrors()) {
 				
 				return "add_equipo";
 			}
-			
+			repoeq.save(equipo);
 			return "redirect:list_e";
 		}
 		
 		@PreAuthorize("hasAuthority('admin')")
-		@GetMapping("/edit/{id}")
+		@GetMapping("/editeq/{id}")
 		public String showUpdateFormEq(@PathVariable("id") Long id, Model model) {
 			EquipoMed equipo = repoeq.findById(id).orElseThrow(() -> new IllegalArgumentException("ID de equipo no valido: " + id));
 			model.addAttribute("equipo", equipo);
