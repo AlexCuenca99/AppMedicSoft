@@ -30,7 +30,7 @@
       </li>
       <!-- <div sec:authorize="isAuthenticated()"> -->
       	<li class="nav-item">
-       		<a class="nav-link" href="/medicsoft/add_medicamento">Nuevo Medicamento</a>
+       		<a class="nav-link" href="/medicsoft/add-medicamento">Nuevo Medicamento</a>
       	</li>
      <!-- </div> --> 
       <li class="nav-item">
@@ -86,7 +86,7 @@
                                 
                                     <tr th:each="medicamento : ${medicamentos}">
                                         <td th:text="${medicamento.nombre}"></td>
-                                        <td th:text="${medicamneto.codigo}"></td>
+                                        <td th:text="${medicamento.codigo}"></td>
                                         <td th:text="${medicamento.precio}"></td>
                                         <td th:text="${medicamento.fechaVenc}"></td>
                                         <td th:text="${medicamento.cantidad}"></td>

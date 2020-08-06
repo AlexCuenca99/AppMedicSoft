@@ -33,7 +33,7 @@ var loadFile = function(event) {
         <a class="nav-link" href="/medicsoft/">Inicio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/medicsoft/list_e">Ver equipos</a>
+        <a class="nav-link" href="/medicsoft/list_m">Ver medicamentos</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Acerca de</a>
@@ -54,7 +54,7 @@ var loadFile = function(event) {
         <div class="col-sm-6">
         <div class="card-transparent">
             <div class="card-body rounded" style="background-color: rgba(0, 0, 0, 0.4); ">
-                    <form action="#" th:action="@{/medicsoft/updateeq/{id}(id=${equipo.id})}" th:object="${equipo}" method="post" enctype="multipart/form-data">
+                    <form action="#" th:action="@{/medicsoft/updateme/{id}(id=${medicamento.id})}" th:object="${medicamento}" method="post" enctype="multipart/form-data">
                         <div class="row">
                              <div class="form-group col-md-12">
                                 <label for="nombre" class="col-form-label">Nombre</label> 
@@ -73,13 +73,13 @@ var loadFile = function(event) {
                             
                             
                             <div class="form-group col-md-12">
-                                <label for="fechaComp" class="col-form-label">Fecha Compra</label>
-                                <textarea class="form-control" th:field="*{fechaComp}" id="fechaComp" rows="3" placeholder="FechaComp"></textarea>
+                                <label for="fechaVenc" class="col-form-label">Fecha vencimiento</label>
+                                <textarea class="form-control" th:field="*{fechaVenc}" id="fechaVenc" rows="3" placeholder="FechaVenc"></textarea>
                             </div>
                             
                             <div class="form-group col-md-12">
-                                <label for="areaUso" class="col-form-label">Área de Uso</label>
-                                <textarea class="form-control" th:field="*{areaUso}" id="areaUso" rows="3" placeholder="AreaUso"></textarea>
+                                <label for="fechaElab" class="col-form-label">Fecha Elaboración</label>
+                                <textarea class="form-control" th:field="*{fechaElab}" id="fechaElab" rows="3" placeholder="FechaElab"></textarea>
                             </div>
                             
                             <div class="form-group col-md-12">

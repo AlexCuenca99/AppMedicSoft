@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import edu.espoch.ejemploAppMedicSoft.entities.EquipoMed;
 import edu.espoch.ejemploAppMedicSoft.entities.Medicamento;
 import edu.espoch.ejemploAppMedicSoft.repository.MedicamentoRepo;
 
@@ -56,7 +55,7 @@ public class MedicamentoControlador {
 	public String showUpdateFormEq(@PathVariable("id") Long id, Model model) {
 		Medicamento medi = repome.findById(id).orElseThrow(() -> new IllegalArgumentException("ID de medicamento no valido: " + id));
 		model.addAttribute("medi", medi);
-		return "update_medicamento";
+		return "update-medicamento";
 	}
 	
 	@PreAuthorize("hasAuthority('admin')")
@@ -64,7 +63,7 @@ public class MedicamentoControlador {
 	public String updateEquipo(@PathVariable("id") Long id, Medicamento medi, BindingResult result, Model model) {
 		if(result.hasErrors()) {
 			medi.setId(id);
-			return "update_medicamento";
+			return "update-medicamento";
 		}
 		
 		repome.save(medi);
