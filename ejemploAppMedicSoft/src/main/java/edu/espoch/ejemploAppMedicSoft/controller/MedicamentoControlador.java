@@ -23,9 +23,9 @@ public class MedicamentoControlador {
 	@Autowired
 	private MedicamentoRepo repome;
 	
-	@GetMapping("/add_medicamento")
+	@GetMapping("/add-medicamento")
 	public String showSignUpFormMedi(Medicamento medi) {
-		return "add_medicamento";
+		return "add-medicamento";
 	}
 	
 	/*-----------------*/
@@ -44,7 +44,7 @@ public class MedicamentoControlador {
 		
 		if(result.hasErrors()) {
 			
-			return "add_equipo";
+			return "add-medicamento";
 		}
 		repome.save(medi);
 		return "redirect:list_m";
