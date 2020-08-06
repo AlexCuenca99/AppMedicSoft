@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import edu.espoch.ejemploAppMedicSoft.entities.EquipoMed;
+//import edu.espoch.ejemploAppMedicSoft.entities.EquipoMed;
 import edu.espoch.ejemploAppMedicSoft.entities.Paciente;
-import edu.espoch.ejemploAppMedicSoft.repository.EquipoMedRepo;
+//import edu.espoch.ejemploAppMedicSoft.repository.EquipoMedRepo;
 import edu.espoch.ejemploAppMedicSoft.repository.PacienteRepo;
 import edu.espoch.ejemploAppMedicSoft.service.PictureService;
 
@@ -27,7 +27,7 @@ public class PacienteControlador {
 	
 	@Autowired
 	private PacienteRepo repo;
-	private EquipoMedRepo repoeq;
+	//private EquipoMedRepo repoeq;
 	
 	@Autowired
 	PictureService picService;
