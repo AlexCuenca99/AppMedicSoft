@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>MedicSoft 2020</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+
+</head>
+
+<body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
+
+
+<nav class="navbar navbar-expand-md">
+
+  <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="main-navigation">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/medicsoft/">Inicio</a>
+      </li>
+      <div sec:authorize="isAuthenticated()">
+      	<li class="nav-item">
+       		<a class="nav-link" href="/medicsoft/add_equipo">Nuevo Equipo</a>
+      	</li>
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Acerca de </a>
+      </li>
+
+
+      <div th:unless="${#authorization.expression('isAuthenticated()')}">
+       <li class="nav-item">
+        <a class="nav-link" href="/medicsoft/login">Iniciar sesión</a>
+       </li>
+      </div>
+
+      <div sec:authorize="isAuthenticated()">
+       <li class="nav-item">
+        <a class="nav-link" href="/medicsoft/logout">Cerrar sesión</a>
+       </li>
+      </div>
+
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header header container-fluid">
+<div class="overlay">
+
+    <div class="container my-2">
+        <div class="card-transparent">
+            <div class="card-body rounded" style="background-color: rgba(0, 0, 0, 0.4); ">
+                <div th:switch="${equipos}" class="container my-5">
+                        <h2 th:case="null">Ningun equipo ha sido registrado aún</h2>
+                        <div th:case="*">
+                            <table class="table table-striped table-responsive-lg">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 25%">Nombre</th>
+                                        <th style="width: 25%">Código</th>
+                                        <th style="width: 10%">Precio</th>
+                                        <th style="width: 10%">Área uso</th>
+                                        <!-- <th style="width: 10%">Historia Clínica</th> -->
+                                        <!--<th style="width: 10%">Número Telefónico</th>  -->
+                                        <!--  <th style="width: 10%">Edad</th>-->
+                                        <!-- <th style="width: 10%">Correo Electrónico</th> -->
+                                        <th style="width: 15%">Cantidad</th>
+                                        <div sec:authorize="isAuthenticated()">
+                                           <th style="width: 8%">Ver</th>
+                                           <th style="width: 8%">Editar</th>
+                                           <th style="width: 8%">Eliminar</th>
+                                        </div>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                
+                                    <tr th:each="equipo : ${equipos}">
+                                        <td th:text="${equipo.nombre}"></td>
+                                        <td th:text="${equipo.codigo}"></td>
+                                        <td th:text="${equipo.precio}"></td>
+                                        <td th:text="${equipo.areaUso}"></td>
+                                        <td th:text="${equipo.cantidad}"></td>
+                                         <!--<td th:text="${paciente.edad}"></td>  -->
+                                         <!-- <td th:text="${paciente.correo}"></td> -->
+                                         
+                                        <td>
+                                         <a data-toggle="modal" data-target="#modalLong" th:attr="data-target='#modalLong'+${paciente.id }" class="btn btn-primary">
+                                            <i class="fas fa-glasses ml-2"></i></a>
+                                         <div class="modal fade" th:id="modalLong+${paciente.id}" tabindex="-1" role="dialog" aria-labelledby="detallePaciente" aria-hidden="true">
+  										 	<div class="modal-dialog" role="document">
+    											<div class="modal-content">
+      												<div class="modal-header">
+        											<h5 class="modal-title text-dark">Detalles del equipo Médico</h5>
+        											<button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+          											<span aria-hidden="true">&times;</span>
+        											</button>
+      												</div>
+      												<div class="modal-body">
+        												<h4 class="text-dark" th:text="${equipo.nombre}"></h4>
+        												
+        												<!--  <div class="text" th:utext="${#strings.unescapeJava(#strings.replace(#strings.escapeJava(receta.preparacion),'\n','&lt;br /&gt;'))}"></div> -->
+        												<p class="text-dark" data-th-utext="${#strings.replace(#strings.escapeXml(equipo.codigo),'&#10;','&lt;br&gt;')}"></p>
+        												
+                                <p class="text-dark" data-th-utext="${#strings.replace(#strings.escapeXml(equipo.precio),'&#10;','&lt;br&gt;')}"></p>
+                                <p class="text-dark" data-th-utext="${#strings.replace(#strings.escapeXml(equipo.fechaComp),'&#10;','&lt;br&gt;')}"></p>
+                                <p class="text-dark" data-th-utext="${#strings.replace(#strings.escapeXml(equipo.areaUso),'&#10;','&lt;br&gt;')}"></p>
+                                <p class="text-dark" data-th-utext="${#strings.replace(#strings.escapeXml(equipo.cantidad),'&#10;','&lt;br&gt;')}"></p>
+                                
+      												</div>
+      												<div class="modal-footer">
+        											<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+
+											    	</div>
+    											   </div>
+  											   </div>
+										 </div>
+                                        </td>
+
+                                        <div sec:authorize="isAuthenticated()">
+                                        <td><a th:href="@{/medicsoft/editeq/{id}(id=${equipo.id})}" class="btn btn-primary"><i class="fas fa-edit ml-2"></i></a></td>
+
+                                        <td><a data-toggle="modal" data-target="#modal-warning" th:attr="data-target='#modal-warning'+${equipo.id }" class="btn btn-primary">
+                                            <i class="fas fa-trash-alt ml-2"></i></a>
+                                            <div class="modal modal-warning fade in" th:id="modal-warning+${paciente.id}" >
+    											<div class="modal-dialog">
+        											<div class="modal-content">
+            											<div class="modal-header">
+                										<h5 class="modal-title text-dark">¿Borrar este equipo?</h5>
+                										<button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                										<span aria-hidden="true">&times;</span></button>
+            											</div>
+            											<div class="modal-body">
+                											<h3 class="text-dark" th:text="${equipo.nombre}"></h3>
+            											</div>
+            											<div class="modal-footer">
+                										<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">No</button>
+                										<a type="button" class="btn btn-outline" th:href="@{/medicsoft/deleteeq/{id}(id=${equipo.id})}">
+                											<i class="fa fa-check"></i>&nbsp;Sí</a>
+            											</div>
+        											</div>
+    											</div>
+											</div>
+                                        </td>
+                                        </div>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+</body>
+</html>
